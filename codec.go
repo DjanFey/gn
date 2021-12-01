@@ -102,7 +102,7 @@ func (e headerLenEncoder) EncodeToFD(fd int32, bytes []byte) error {
 	// 将消息内容内容写入buffer
 	copy(buffer[e.headerLen:], bytes)
 
-	_, err := syscall.Write(int(fd), buffer)
+	_, err := syscall.Write(syscall.Handle(fd), buffer)
 	return err
 }
 

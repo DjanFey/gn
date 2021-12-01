@@ -65,7 +65,7 @@ func (c *Conn) Read() error {
 
 // Write 写入数据
 func (c *Conn) Write(bytes []byte) (int, error) {
-	return syscall.Write(int(c.fd), bytes)
+	return syscall.Write(syscall.Handle(c.fd), bytes)
 }
 
 // Close 关闭连接
